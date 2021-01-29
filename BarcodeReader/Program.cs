@@ -18,6 +18,15 @@ namespace BarcodeReader
                 // Decode barcodes
                 decoder.IDecoder<string> barcodeDecoder = new decoder.BarcodeDecoder();
                 List<string> decodedBarcodes = barcodeDecoder.Decode( barcodes );
+
+                // Format decodedBarcodes
+                formater.IFormater<string> barcodeFormater = new formater.BarcodeFormater();
+                List<string> formatedBarcodes = barcodeFormater.Format( decodedBarcodes );
+
+                // Print the decoded & formated content
+                formatedBarcodes.ForEach( Console.WriteLine );
+
+                Console.ReadLine();
             }
             catch (IOException ex) {
                 Console.WriteLine(ex.ToString());
