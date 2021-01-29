@@ -14,6 +14,10 @@ namespace BarcodeReader
                 // Read file
                 reader.IReader<string> barcodeReader = new reader.BarcodeReader();
                 List<string> barcodes = barcodeReader.Read( filepath );
+
+                // Decode barcodes
+                decoder.IDecoder<string> barcodeDecoder = new decoder.BarcodeDecoder();
+                List<string> decodedBarcodes = barcodeDecoder.Decode( barcodes );
             }
             catch (IOException ex) {
                 Console.WriteLine(ex.ToString());
